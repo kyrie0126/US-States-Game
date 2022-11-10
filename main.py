@@ -36,10 +36,7 @@ while alive:
     else:
         t.goto(0,0)
         t.write("Game Over", align="center", font=("Courier", 30, "bold"))
-        to_learn = []
-        for state in all_states:
-            if state not in guessed_states:
-                to_learn.append(state)
+        to_learn = [state for state in all_states if state not in guessed_states]
         df_learn = pd.DataFrame(to_learn, columns=["States to Learn"])
         df_csv = df_learn.to_csv("states_to_learn.csv")
 
